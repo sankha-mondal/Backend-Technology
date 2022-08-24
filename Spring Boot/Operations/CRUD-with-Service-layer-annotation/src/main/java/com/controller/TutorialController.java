@@ -35,11 +35,9 @@ public class TutorialController {
 	
 	
 	  
-//=======================================================================================================================================
-  
-//*************************************************** : CRUD Operation : ****************************************************************
-  
-//=======================================================================================================================================
+//================================================================================================================================================================= 
+//******************************************************************** : CRUD Operation : *************************************************************************
+//=================================================================================================================================================================
 
 	
 		  	 //  Retrieve Operation:-  Op:1
@@ -54,12 +52,12 @@ public class TutorialController {
 					      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 					    }
 				    
-				    return new ResponseEntity<>(tutorials, HttpStatus.OK);
+				 return new ResponseEntity<>(tutorials, HttpStatus.OK);
 			  }
 	  
   
   
-//=======================================================================================================================================
+//=================================================================================================================================================================
 
 			  
 			  //  Retrieve data by Id :-  Op:2
@@ -68,14 +66,14 @@ public class TutorialController {
 		
 			  @GetMapping("/getById/{id}")
 			  public ResponseEntity<Tutorial> getTutorialById(@PathVariable("id") long id) {
-			    Tutorial tutorial = tutorialService.getTuteById(id);
+			    		Tutorial tutorial = tutorialService.getTuteById(id);
 			
 			    	return new ResponseEntity<>(tutorial, HttpStatus.OK);
 			  }
 	  
 	  
 	  
-//=======================================================================================================================================	  
+//=================================================================================================================================================================	  
 	  
 			  //  Insert Operation:-    Op:3
 			  
@@ -83,9 +81,9 @@ public class TutorialController {
 			  
 			  @PostMapping("/store")
 			  public ResponseEntity<Tutorial> createTutorial(@Valid @RequestBody Tutorial tutorial) {
-				  Tutorial _tutorial = this.tutorialService.createTutorial(tutorial);
+				  	Tutorial _tutorial = this.tutorialService.createTutorial(tutorial);
 				  
-			    return new ResponseEntity<>(_tutorial, HttpStatus.CREATED);
+			    	return new ResponseEntity<>(_tutorial, HttpStatus.CREATED);
 			  }
 			  
 			  /**
@@ -97,7 +95,7 @@ public class TutorialController {
 			  */
 	  
    
-//=======================================================================================================================================
+//=================================================================================================================================================================
 	  
 			  //  Update Operation:-   Op:4
 			  
@@ -105,14 +103,14 @@ public class TutorialController {
 			  
 			  @PutMapping("/update/{id}")
 			  public ResponseEntity<Tutorial> updateTutorial(@Valid @RequestBody Tutorial tutorial, @PathVariable("id") long id) {
-			    Tutorial _tutorial = tutorialService.updateTutorial(tutorial, id);
+			    		Tutorial _tutorial = tutorialService.updateTutorial(tutorial, id);
 			    
-			    return new ResponseEntity<>(tutorialRepository.save(_tutorial), HttpStatus.OK);
+			   	 return new ResponseEntity<>(tutorialRepository.save(_tutorial), HttpStatus.OK);
 			  }
 		  
 	  
   
-//=======================================================================================================================================
+//=================================================================================================================================================================
   
 			  //  Delete Operation by Id:-   Op:5
 			  
@@ -129,7 +127,7 @@ public class TutorialController {
 	  
 	  
   
-//=======================================================================================================================================
+//=================================================================================================================================================================
 	  
 			  //  Delete All Operation:-   Op:6
 				 
@@ -146,11 +144,9 @@ public class TutorialController {
 	  
 	  
 	  
-//=======================================================================================================================================
-
-//**************************************************** : User Define : *****************************************************************
-	  
-//======================================================================================================================================
+//=================================================================================================================================================================
+//*********************************************************************** : User Define : *************************************************************************	  
+//=================================================================================================================================================================
   
 	  
 			  //  Retrieve data by published Operation:-   Op:7
@@ -165,12 +161,12 @@ public class TutorialController {
 					      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 					    }
 			    
-			    return new ResponseEntity<>(tutorials, HttpStatus.OK);
+			    	return new ResponseEntity<>(tutorials, HttpStatus.OK);
 			  }
 			  
 		  
 		  
-//=======================================================================================================================================
+//=================================================================================================================================================================
 	  
 	  
 			  //  Retrieve data by title Operation:-   Op:8
@@ -185,12 +181,12 @@ public class TutorialController {
 					      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 					    }
 			    
-			    return new ResponseEntity<>(tutorials, HttpStatus.OK);
+			    	return new ResponseEntity<>(tutorials, HttpStatus.OK);
 			  }
 			  
 			  
 			  
-//=======================================================================================================================================
+//=================================================================================================================================================================
 	  
 			  //  Retrieve data by Title Operation:-   Op: 9
 			  
@@ -204,12 +200,12 @@ public class TutorialController {
 					      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 					    }
 			    
-			    return new ResponseEntity<>(tutorials, HttpStatus.OK);
+			    	return new ResponseEntity<>(tutorials, HttpStatus.OK);
 			  }
 			  
 			  
 			  
-//=======================================================================================================================================
+//=================================================================================================================================================================
 	  
 			  //  Retrieve data by Title & published Operation:-   Op: 10
 			  
@@ -217,19 +213,19 @@ public class TutorialController {
 			  
 			  @GetMapping("/findTutorialByTitle/{title}/{published}")
 			  public ResponseEntity<List<Tutorial>> findTutorialByTitlepublish(@PathVariable("title") String title, 
-					  														   @PathVariable("published") boolean published) {
+					  						   @PathVariable("published") boolean published) {
 			    List<Tutorial> tutorials = tutorialService.findTutorialByTitlepublish(title, published);
 
-				    if (tutorials.isEmpty()) {
-				      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-				    }
+					    if (tutorials.isEmpty()) {
+					      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+					    }
 			    
-			    return new ResponseEntity<>(tutorials, HttpStatus.OK);
+			    	return new ResponseEntity<>(tutorials, HttpStatus.OK);
 			  }
 			  
 		
 			  
-//=======================================================================================================================================
+//=================================================================================================================================================================
 			  
 			  //  Retrieve data Order by Id Operation:-   Op:11
 			  
@@ -239,16 +235,16 @@ public class TutorialController {
 			  public ResponseEntity<List<Tutorial>> sortTutorialById() {
 			    List<Tutorial> tutorials = tutorialService.sortTutorialById();
 		
-				    if (tutorials.isEmpty()) {
-				      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-				    }
+					    if (tutorials.isEmpty()) {
+					      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+					    }
 			    
-			    return new ResponseEntity<>(tutorials, HttpStatus.OK);
+			    	return new ResponseEntity<>(tutorials, HttpStatus.OK);
 			  }
 			  
 			  
 			  
-//=======================================================================================================================================
+//=================================================================================================================================================================
 			  
 			  //  Search Operation by like Title:-      Op:12
 			  
@@ -258,17 +254,17 @@ public class TutorialController {
 			  public ResponseEntity<List<Tutorial>> searchByTitle(@PathVariable("keyword") String keyword) {
 			    List<Tutorial> tutorials = tutorialRepository.searchByTitle("%"+keyword+"%");
 
-				    if (tutorials.isEmpty()) {
-				      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-				    }
+					    if (tutorials.isEmpty()) {
+					      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+					    }
 			    
-			    return new ResponseEntity<>(tutorials, HttpStatus.OK);
+			    	return new ResponseEntity<>(tutorials, HttpStatus.OK);
 			    
 			  }
 			  
 			  
 			  
-//=======================================================================================================================================
+//=================================================================================================================================================================
 			  
 			  //  Delete data  Operation:-   Op: 13
 			  
@@ -283,7 +279,7 @@ public class TutorialController {
 			  
 			  
 			  
-//=======================================================================================================================================
+//=================================================================================================================================================================
 			  
 			  
 			  
