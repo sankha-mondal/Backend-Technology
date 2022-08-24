@@ -102,7 +102,7 @@ public class TutorialController {
 			  public ResponseEntity<Tutorial> updateTutorial(@Valid @RequestBody Tutorial tutorial, @PathVariable("id") long id) {
 			    		Tutorial _tutorial = tutorialService.updateTutorial(tutorial, id);
 			    
-			   	 return new ResponseEntity<>(tutorialRepository.save(_tutorial), HttpStatus.OK);
+			    	return new ResponseEntity<>(_tutorial, HttpStatus.OK);
 			  }
 		  
 	  
@@ -249,14 +249,13 @@ public class TutorialController {
 			  
 			  @GetMapping("/search/{keyword}")
 			  public ResponseEntity<List<Tutorial>> searchByTitle(@PathVariable("keyword") String keyword) {
-			    List<Tutorial> tutorials = tutorialRepository.searchByTitle("%"+keyword+"%");
+			    List<Tutorial> tutorials = tutorialService.searchByTitle(keyword);
 
 					    if (tutorials.isEmpty()) {
 					      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 					    }
 			    
 			    	return new ResponseEntity<>(tutorials, HttpStatus.OK);
-			    
 			  }
 			  
 			  
