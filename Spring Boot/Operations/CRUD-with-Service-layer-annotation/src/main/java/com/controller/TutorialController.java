@@ -152,7 +152,7 @@ public class TutorialController {
 			  
 			  @GetMapping("/getAllBy/published")
 			  public ResponseEntity<List<Tutorial>> findByPublished() {
-				  	List<Tutorial> tutorials = tutorialService.findByPublished();
+				  List<Tutorial> tutorials = tutorialService.findByPublished();
 			
 					    if (tutorials.isEmpty()) {
 					      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -172,7 +172,7 @@ public class TutorialController {
 			  
 			  @GetMapping("/getAllBy/{title}")
 			  public ResponseEntity<List<Tutorial>> findByTitleContaining(@PathVariable("title") String title) {
-				  	List<Tutorial> tutorials = tutorialService.findByTitleContaining(title);
+				  List<Tutorial> tutorials = tutorialService.findByTitleContaining(title);
 						  
 					    if (tutorials.isEmpty()) {
 					      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -191,7 +191,7 @@ public class TutorialController {
 			  
 			  @GetMapping("/findTutorialByTitle/{title}")
 			  public ResponseEntity<List<Tutorial>> findTutorialByTitle(@PathVariable("title") String title) {
-				  	List<Tutorial> tutorials = tutorialService.findTutorialByTitle(title);
+				  List<Tutorial> tutorials = tutorialService.findTutorialByTitle(title);
 		
 					    if (tutorials.isEmpty()) {
 					      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -211,11 +211,11 @@ public class TutorialController {
 			  @GetMapping("/findTutorialByTitle/{title}/{published}")
 			  public ResponseEntity<List<Tutorial>> findTutorialByTitlepublish(@PathVariable("title") String title, 
 					  						   @PathVariable("published") boolean published) {
-			    List<Tutorial> tutorials = tutorialService.findTutorialByTitlepublish(title, published);
+			    	List<Tutorial> tutorials = tutorialService.findTutorialByTitlepublish(title, published);
 
-					    if (tutorials.isEmpty()) {
-					      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-					    }
+						    if (tutorials.isEmpty()) {
+						      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+						    }
 			    
 			    	return new ResponseEntity<>(tutorials, HttpStatus.OK);
 			  }
@@ -230,7 +230,7 @@ public class TutorialController {
 			  
 			  @GetMapping("/sortTutorialById")
 			  public ResponseEntity<List<Tutorial>> sortTutorialById() {
-			    List<Tutorial> tutorials = tutorialService.sortTutorialById();
+			   	 List<Tutorial> tutorials = tutorialService.sortTutorialById();
 		
 					    if (tutorials.isEmpty()) {
 					      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -249,7 +249,7 @@ public class TutorialController {
 			  
 			  @GetMapping("/search/{keyword}")
 			  public ResponseEntity<List<Tutorial>> searchByTitle(@PathVariable("keyword") String keyword) {
-			    List<Tutorial> tutorials = tutorialService.searchByTitle(keyword);
+			    	List<Tutorial> tutorials = tutorialService.searchByTitle(keyword);
 
 					    if (tutorials.isEmpty()) {
 					      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
