@@ -76,7 +76,9 @@ public class TutorialService {
 					    _tutorial.setPublished(tutorial.isPublished());
 					    System.out.println("Details Updated...");
 					    
-				return _tutorial;	
+				Tutorial update_tutorial = tutorialRepo.save(_tutorial);
+					    
+				return update_tutorial;	
 			}
 		
 		
@@ -168,7 +170,7 @@ public class TutorialService {
 			//  Search Operation by like Title:-      Op:12
 			
 			public List<Tutorial> searchByTitle(String keyword) {
-				List<Tutorial> tutorials = tutorialRepo.searchByTitle(keyword);
+				List<Tutorial> tutorials = tutorialRepo.searchByTitle("%"+keyword+"%");
 				
 				return tutorials;
 			}
