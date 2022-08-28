@@ -207,7 +207,7 @@ public class TutorialController {
 		  
 		  @GetMapping("/findTutorialByTitle/{title}/{published}")
 		  public ResponseEntity<List<Tutorial>> findTutorialByTitlepublish(@PathVariable("title") String title, 
-				  														   @PathVariable("published") boolean published) {
+				  						   @PathVariable("published") boolean published) {
 		    List<Tutorial> tutorials = tutorialRepository.findTutorialByTitlepublish(title, published);
 	
 			    if (tutorials.isEmpty()) {
