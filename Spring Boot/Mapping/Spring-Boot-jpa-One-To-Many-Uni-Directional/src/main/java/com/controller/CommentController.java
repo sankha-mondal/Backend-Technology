@@ -35,7 +35,8 @@ public class CommentController {
   	  //  http://localhost:9090/comments/getByTutorial/{tutorialId}
   
 	  @GetMapping("/getByTutorial/{tutorialId}")
-	  public ResponseEntity<List<Comment>> getAllCommentsByTutorialId(@PathVariable(value = "tutorialId") Long tutorialId) {    
+	  public ResponseEntity<List<Comment>> getAllCommentsByTutorialId(@PathVariable(value = "tutorialId") Long tutorialId) { 
+		  
 	    Tutorial tutorial = tutorialRepository.findById(tutorialId)
 	        .orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + tutorialId));
 	
@@ -54,6 +55,7 @@ public class CommentController {
 
 	  @GetMapping("/comment/{commentId}")
 	  public ResponseEntity<Comment> getCommentsByTutorialId(@PathVariable(value = "commentId") Long commentId) {
+		  
 	    Comment comment = commentRepository.findById(commentId)
 	        .orElseThrow(() -> new ResourceNotFoundException("Not found Comment with id = " + commentId));
 	
@@ -69,7 +71,8 @@ public class CommentController {
 	  
 	  @PostMapping("/store/{tutorialId}")
 	  public ResponseEntity<Comment> createComment( @PathVariable(value = "tutorialId") Long tutorialId,
-			  										@RequestBody Comment commentRequest) {
+			  				@RequestBody Comment commentRequest) {
+		  
 	    Comment comment = tutorialRepository.findById(tutorialId).map(tutorial -> {
 	      tutorial.getComments().add(commentRequest);
 	      return commentRepository.save(commentRequest);
@@ -87,6 +90,7 @@ public class CommentController {
 	  
 	  @PutMapping("/update/{id}")
 	  public ResponseEntity<Comment> updateComment(@PathVariable("id") long id, @RequestBody Comment commentRequest) {
+		  
 	    Comment comment = commentRepository.findById(id)
 	        .orElseThrow(() -> new ResourceNotFoundException("CommentId " + id + " not found"));
 	
@@ -104,6 +108,7 @@ public class CommentController {
 	  
 	  @DeleteMapping("/delete/{id}")
 	  public ResponseEntity<ApiResponse> deleteComment(@PathVariable("id") long id) {
+		  
 		  Comment comment_id = commentRepository.findById(id)
 			        .orElseThrow(() -> new ResourceNotFoundException("Comment Id " + id + " not found"));
 		  
