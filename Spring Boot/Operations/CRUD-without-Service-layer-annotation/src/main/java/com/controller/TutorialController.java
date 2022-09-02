@@ -163,20 +163,20 @@ public class TutorialController {
   
 //=================================================================================================================================================================
 	  
-			  //  Retrieve data by title Operation:-   Op:8
-			  
-			  //  http://localhost:9090/tutorials/getAllBy/{title}
-			  
-			  @GetMapping("/getAllBy/{title}")
-			  public ResponseEntity<List<Tutorial>> findByTitleContaining(@PathVariable("title") String title) {
-			    List<Tutorial> tutorials = tutorialRepository.findByTitleContaining(title);
-		
-				    if (tutorials.isEmpty()) {
-				      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-				    }
-			    
-			    return new ResponseEntity<>(tutorials, HttpStatus.OK);
-			  }
+		  //  Retrieve data by title Operation:-   Op:8
+
+		  //  http://localhost:9090/tutorials/getAllBy/{title}
+
+		  @GetMapping("/getAllBy/{title}")
+		  public ResponseEntity<List<Tutorial>> findByTitleContaining(@PathVariable("title") String title) {
+		    List<Tutorial> tutorials = tutorialRepository.findByTitleContaining(title);
+
+			    if (tutorials.isEmpty()) {
+			      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			    }
+
+		    return new ResponseEntity<>(tutorials, HttpStatus.OK);
+		  }
 	  
 	  
 	
