@@ -27,10 +27,28 @@ public class CommentController {
 
   @Autowired
   private CommentRepository commentRepository;
+	
+//================================================================================= : CRUD : =============================================================================
+
+	  //  Retrieve All Comments:-  Op:1
+	
+	  //  http://localhost:9090/comments/getAll
+	
+	  @GetMapping("/getAll")
+	  public ResponseEntity<List<Comment>> getAllComment() {
+		  
+	    List<Comment> comments = new ArrayList<Comment>();
+	    	commentRepository.findAll().forEach(comments::add);
+		
+		    if (comments.isEmpty()) {
+		      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		    }
+		 return new ResponseEntity<>(comments, HttpStatus.OK);
+	  }
   
-//======================================================================================================================================
+//===================================================================================================================================================================
  
-  	  //  Retrieve by tutorial-Id:-  Op:1
+  	  //  Retrieve by tutorial-Id:-  Op:2
   
   	  //  http://localhost:9090/comments/getByTutorial/{tutorialId}
   
@@ -47,25 +65,25 @@ public class CommentController {
 	  }
   
   
-//======================================================================================================================================
+//===================================================================================================================================================================
 
-	  //  Retrieve by comment-Id:-  Op:2
+	  //  Retrieve by comment-Id:-  Op:3
 	  
 	  //  http://localhost:9090/comments/comment/{commentId}
 
 	  @GetMapping("/comment/{commentId}")
 	  public ResponseEntity<Comment> getCommentsByTutorialId(@PathVariable(value = "commentId") Long commentId) {
 		  
-	    Comment comment = commentRepository.findById(commentId)
-	        .orElseThrow(() -> new ResourceNotFoundException("Not found Comment with id = " + commentId));
+	        Comment comment = commentRepository.findById(commentId)
+		     .orElseThrow(() -> new ResourceNotFoundException("Not found Comment with id = " + commentId));
 	
 	    return new ResponseEntity<>(comment, HttpStatus.OK);
 	  }
   
   
-//======================================================================================================================================
+//===================================================================================================================================================================
 
-	  //  Insert Operation with tutorial-Id:-    Op:3
+	  //  Insert Operation with tutorial-Id:-    Op:4
 	  
 	  //  http://localhost:9090/comments/store/{tutorialId}
 	  
@@ -73,36 +91,36 @@ public class CommentController {
 	  public ResponseEntity<Comment> createComment( @PathVariable(value = "tutorialId") Long tutorialId,
 			  				@RequestBody Comment commentRequest) {
 		  
-	    Comment comment = tutorialRepository.findById(tutorialId).map(tutorial -> {
-	      tutorial.getComments().add(commentRequest);
-	      return commentRepository.save(commentRequest);
-	    }).orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + tutorialId));
+	          Comment comment = tutorialRepository.findById(tutorialId).map(tutorial -> {
+	                tutorial.getComments().add(commentRequest);
+	                     return commentRepository.save(commentRequest);
+	          }).orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + tutorialId));
 	
 	    return new ResponseEntity<>(comment, HttpStatus.CREATED);
 	  }
   
   
-//======================================================================================================================================
+//===================================================================================================================================================================
 
-	  //  Update Operation by Comment-id:-   Op:4
+	  //  Update Operation by Comment-id:-   Op:5
 	  
 	  //  http://localhost:9090/comments/update/{id}
 	  
 	  @PutMapping("/update/{id}")
 	  public ResponseEntity<Comment> updateComment(@PathVariable("id") long id, @RequestBody Comment commentRequest) {
 		  
-	    Comment comment = commentRepository.findById(id)
-	        .orElseThrow(() -> new ResourceNotFoundException("CommentId " + id + " not found"));
+	         Comment comment = commentRepository.findById(id)
+	              .orElseThrow(() -> new ResourceNotFoundException("CommentId " + id + " not found"));
 	
-	    comment.setContent(commentRequest.getContent());
+	         comment.setContent(commentRequest.getContent());
 	
 	    return new ResponseEntity<>(commentRepository.save(comment), HttpStatus.OK);
 	  }
   
   
-//======================================================================================================================================
+//===================================================================================================================================================================
 
-	  //  Delete Operation by Id:-   Op:5
+	  //  Delete Operation by Id:-   Op:6
 	  
 	  //  http://localhost:9090/comments/delete/{id}
 	  
@@ -118,7 +136,7 @@ public class CommentController {
 		  return new ResponseEntity<ApiResponse>(new ApiResponse("Comment content deleted Successfully", true), HttpStatus.OK);
 	  }
   
-//======================================================================================================================================
+//===================================================================================================================================================================
 
 	  //  http://localhost:9090/comments/tutorials/{tutorialId}/comments
 	  /**   Not Working
@@ -133,7 +151,8 @@ public class CommentController {
 	  */
   
   
-//======================================================================================================================================
+//===================================================================================================================================================================
+//===================================================================================================================================================================	
 
   
   
