@@ -23,15 +23,6 @@ import com.service.TutorialService;
 @RestController
 @RequestMapping("/comments")       //  http://localhost:9090/comments
 public class CommentController {
-
-	  @Autowired
-	  private TutorialRepository tutorialRepository;
-	  
-	  @Autowired
-	  private TutorialService tutorialService;
-	
-	  @Autowired
-	  private CommentRepository commentRepository;
 	  
 	  @Autowired
 	  private CommentService commentService;
