@@ -1,0 +1,23 @@
+package com;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+		System.out.println("One-To-One Uni Directional mapping With Service layer Running on port number 9090...");
+	}
+
+}
+
+
+	/**
+	 *   Dependencies: jpa, web, devtools, mysql
+	 *   Run as: Java Application
+	 */
+
+
+
