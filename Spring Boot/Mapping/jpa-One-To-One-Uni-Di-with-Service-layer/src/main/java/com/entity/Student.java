@@ -26,7 +26,7 @@ public class Student {
 	private String email;
 	
 	@OneToOne(cascade = CascadeType.ALL)      
-	@JoinColumn(name = "S_A_id", referencedColumnName="aId")  //  "aId" is PK of Address.class
+	@JoinColumn(name = "S_A_id", referencedColumnName="aId")  //  "aId" is PK of Address.class, referencedColumnName is optional
 	private Address address;
 	
 	/**
