@@ -14,16 +14,16 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "address_id")
-	private int id;
+	private int aId;
 	
 	@Column(name = "address_city")	
 	private String city;
 	
 	public int getId() {
-		return id;
+		return aid;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int aId) {
+		this.aId = aId;
 	}
 	public String getCity() {
 		return city;
@@ -34,7 +34,7 @@ public class Address {
 	
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", city=" + city + "]";
+		return "Address [id=" + aId + ", city=" + city + "]";
 	}
 	
 
