@@ -17,7 +17,7 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "student_id")
-	private int id;
+	private int sId;
 	
 	@Column(name = "student_name")
 	private String name;
@@ -38,10 +38,10 @@ public class Student {
 	 */
 	
 	public int getId() {
-		return id;
+		return sId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int sId) {
+		this.sId = sId;
 	}
 	public String getName() {
 		return name;
