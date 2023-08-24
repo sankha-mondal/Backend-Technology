@@ -30,7 +30,7 @@ public class Tutorial {
 			 }
 	  	  */
 	
-	  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	  @OneToMany(targetEntity=Comment.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	  @JoinColumn(name = "tutorial_id")
 	  private Set<Comment> comments = new HashSet<>();    // One Tutorial has many Comments.
 	  
