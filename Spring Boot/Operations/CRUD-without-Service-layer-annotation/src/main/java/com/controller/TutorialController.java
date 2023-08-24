@@ -43,7 +43,8 @@ public class TutorialController {
 			      tutorialRepository.findByTitleContaining(title).forEach(tutorials::add);
 			
 			    if (tutorials.isEmpty()) {
-			      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			      //  return new ResponseEntity<>(HttpStatus.NO_CONTENT);   OR
+				  throw new ResourceNotFoundException("No data found");
 			    }
 			
 			    return new ResponseEntity<>(tutorials, HttpStatus.OK);
