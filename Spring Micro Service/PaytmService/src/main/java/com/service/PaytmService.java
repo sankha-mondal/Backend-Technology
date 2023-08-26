@@ -17,7 +17,7 @@ public class PaytmService {
 	
 	@Autowired
 	RestTemplate restTemplate;		// RestTemplate provide set of method 
-									// which help to call other service or micro service 
+						// which help to call other service or micro service 
 	
 //============================================================================================================================================
 
