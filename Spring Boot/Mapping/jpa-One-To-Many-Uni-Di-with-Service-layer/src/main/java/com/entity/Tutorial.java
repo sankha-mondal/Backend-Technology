@@ -11,7 +11,7 @@ public class Tutorial {
 
 	  @Id
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
-	  private long id;
+	  private long tId;
 	
 	  @Column(name = "title")
 	  private String title;
@@ -31,7 +31,8 @@ public class Tutorial {
 	  	  */
 	
 	  @OneToMany(targetEntity=Comment.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-	  @JoinColumn(name = "tutorial_id", referencedColumnName="id")  //  "tuorial_id" column will create in "Comments" table
+	  @JoinColumn(name = "tutorial_id", referencedColumnName="tId")  //  "tuorial_id" column will create in "Comments" table 
+	  //  Here 'tId' is PK of Tetorial table  || referencedColumnName is optional
  	  private Set<Comment> comments = new HashSet<>();    // One Tutorial has many Comments.
 	  
 //===================================================================================================================================
