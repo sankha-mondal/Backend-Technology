@@ -3,10 +3,10 @@ package com.bean;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Id; 
 
 @Entity
-public class Paytm {
+public class Paytm {    // Paytm-Service going to call Account-Service
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
