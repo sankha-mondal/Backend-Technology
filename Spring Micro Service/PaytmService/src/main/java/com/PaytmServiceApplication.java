@@ -15,9 +15,9 @@ public class PaytmServiceApplication {
 	}
 
 	// Bcoz Paytm-Service going to call Account-Service
-	@Bean								
-	@LoadBalanced				// This annotation is responsible to call microservice by name 
-	public RestTemplate restTemplate() {	// This method is responsible for creating the object but maintain by container. 
+	@Bean					// This method is responsible for creating the object but maintain by container.			
+	@LoadBalanced				// @LoadBalanced is responsible to call microservice by name. 
+	public RestTemplate restTemplate() {	 
 		return new RestTemplate();
 	}
 }
