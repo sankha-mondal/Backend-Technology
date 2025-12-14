@@ -13,7 +13,16 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class UserServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UserServiceApplication.class, args);
+		ConfigurableApplicationContext context = 
+			SpringApplication.run(UserServiceApplication.class, args);
+
+		String[] beanNames = context.getBeanDefinitionNames();
+        Arrays.sort(beanNames);
+
+		// All default beans
+        for (String beanName : beanNames) {
+            System.out.println(beanName);
+        }
 		System.out.println("User service running on port number 8080...");
 	}
 
